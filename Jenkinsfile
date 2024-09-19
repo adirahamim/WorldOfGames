@@ -41,7 +41,7 @@ pipeline {
         stage('Finalize') {
             steps {
                 script {
-                    docker.image("${IMAGE_NAME}").stop()
+                    sh "docker stop $(docker ps -q --filter ancestor=${IMAGE_NAME})"
                     docker.image("${IMAGE_NAME}").push()
                 }
             }
