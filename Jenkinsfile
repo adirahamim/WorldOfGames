@@ -9,7 +9,7 @@ pipeline {
     }
 
     tools {
-        git 'Default' // Ensure this matches the name configured in Global Tool Configuration
+        git 'git' // Ensure this matches the name configured in Global Tool Configuration
     }
 
     stages {
