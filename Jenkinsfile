@@ -8,10 +8,6 @@ pipeline {
         SCORES_FILE = 'Scores.txt'
     }
 
-    tools {
-        git 'git' // Ensure this matches the name configured in Global Tool Configuration
-    }
-
     stages {
         stage('Environment') {
             steps {
