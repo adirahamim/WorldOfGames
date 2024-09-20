@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'worldofgames-web-1'
+        IMAGE_NAME = 'web'
         PORT = '5002'
         HOST_PORT = '5002'
         SCORES_FILE = 'Scores.txt'
