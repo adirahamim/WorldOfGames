@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'worldofgames'
+        IMAGE_NAME = 'worldofgames-jenkins-1'
         PORT = '5002'
         HOST_PORT = '5002'
         SCORES_FILE = 'Scores.txt'
