@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'worldofgames-jenkins-1'
+        IMAGE_NAME = 'web'
         PORT = '5002'
         HOST_PORT = '5002'
         SCORES_FILE = 'Scores.txt'
@@ -25,7 +25,9 @@ pipeline {
         stage('Run') {
             steps {
                 script {
-                    docker.image("${IMAGE_NAME}").run("-p ${HOST_PORT}:${PORT} -v $PWD/${SCORES_FILE}:/Scores.txt")
+                    //docker.image("${IMAGE_NAME}").run("-p ${HOST_PORT}:${PORT} -v $PWD/${SCORES_FILE}:/Scores.txt")
+                    docker.image("${IMAGE_NAME}").run("-p ${HOST_PORT}:${PORT} -v ${WORKSPACE}/${SCORES_FILE}:/Scores.txt")
+
                 }
             }
         }
@@ -42,7 +44,8 @@ pipeline {
         stage('Finalize') {
             steps {
                 script {
-                    docker.image("${IMAGE_NAME}").stop()
+                    //docker.image("${IMAGE_NAME}").stop()
+                    sh "docker stop \$(docker ps -q --filter ancestor=${IMAGE_NAME})"
                     docker.image("${IMAGE_NAME}").push()
                 }
             }
