@@ -3,20 +3,22 @@ pipeline {
 
     environment {
         IMAGE_NAME = 'web'
-        PORT = '8777'  // Updated port
-        HOST_PORT = '8777'  // Updated port
+        PORT = '8777'
+        HOST_PORT = '8777'
         SCORES_FILE = 'Scores.txt'
     }
 
     stages {
         stage('Checkout') {
             steps {
+                echo 'Checking out code...'
                 git 'https://github.com/adirahamim/WorldOfGames.git'
             }
         }
         stage('Build') {
             steps {
                 script {
+                    echo 'Building Docker image...'
                     docker.build("${IMAGE_NAME}")
                 }
             }
@@ -24,6 +26,7 @@ pipeline {
         stage('Run') {
             steps {
                 script {
+                    echo 'Running Docker container...'
                     docker.image("${IMAGE_NAME}").run("-p ${HOST_PORT}:${PORT} -v ${WORKSPACE}/${SCORES_FILE}:/Scores.txt")
                 }
             }
@@ -31,6 +34,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
+                    echo 'Running tests...'
                     def result = sh(script: 'python e2e.py', returnStatus: true)
                     if (result != 0) {
                         error('Tests failed')
@@ -41,6 +45,7 @@ pipeline {
         stage('Finalize') {
             steps {
                 script {
+                    echo 'Finalizing...'
                     sh "docker stop \$(docker ps -q --filter ancestor=${IMAGE_NAME})"
                     docker.image("${IMAGE_NAME}").push()
                 }
@@ -50,6 +55,7 @@ pipeline {
     post {
         always {
             script {
+                echo 'Cleaning up...'
                 def containers = sh(script: "docker ps -q --filter ancestor=${IMAGE_NAME}", returnStdout: true).trim()
                 if (containers) {
                     sh "docker rm -f ${containers}"
