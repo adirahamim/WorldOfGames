@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = 'web'
-        PORT = '5002'
+        PORT = '8777'
         HOST_PORT = '5002'
         SCORES_FILE = 'Scores.txt'
     }
