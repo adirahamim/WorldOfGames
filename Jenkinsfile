@@ -2,11 +2,12 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'worldofgames-web'
+        IMAGE_NAME = 'worldofgames-jenkins-1'
         PORT = '5002'
         HOST_PORT = '5002'
         SCORES_FILE = 'Scores.txt'
     }
+
 
     stages {
         stage('Checkout') {
@@ -41,7 +42,7 @@ pipeline {
         stage('Finalize') {
             steps {
                 script {
-                    sh "docker stop \$(docker ps -q --filter ancestor=${IMAGE_NAME})"
+                    docker.image("${IMAGE_NAME}").stop()
                     docker.image("${IMAGE_NAME}").push()
                 }
             }
