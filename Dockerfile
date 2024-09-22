@@ -21,7 +21,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 #COPY Scores.txt /app
 
 # Make port 8777 available to the world outside this container
-EXPOSE 5002
+#EXPOSE 5002
+EXPOSE 8777
 
 # Define environment variable
 ENV NAME World
