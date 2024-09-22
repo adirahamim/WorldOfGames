@@ -4,7 +4,11 @@ pipeline {
     environment {
         IMAGE_NAME = 'web'
         PORT = '8777'
+<<<<<<< HEAD
         HOST_PORT = '8777'
+=======
+        HOST_PORT = '5002'
+>>>>>>> 21498c08ced7552413adfd31b45b0644c1818891
         SCORES_FILE = 'Scores.txt'
     }
 
