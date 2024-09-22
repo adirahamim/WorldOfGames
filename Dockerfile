@@ -1,3 +1,9 @@
+FROM jenkins/jenkins:lts
+USER root
+RUN apt-get update && apt-get install -y docker.io
+
+
+
 # Use an official Python runtime as a parent image
 FROM python:3.9-slim
 
@@ -26,3 +32,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 CMD curl 
 # Run app.py when the container launches
 #CMD ["python", "app.py"]
 CMD ["python", "/app/MainScores.py"]
+
