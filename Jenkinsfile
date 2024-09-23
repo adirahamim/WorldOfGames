@@ -11,12 +11,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-<<<<<<< HEAD
                 git branch: 'main', url: 'https://github.com/adirahamim/WorldOfGames.git'
-=======
-                echo 'Checking out code...'
-                git 'https://github.com/adirahamim/WorldOfGames.git'
->>>>>>> 31123e54890432d0af9cebb3b8f1c00e535ed94a
             }
         }
         stage('Build') {
