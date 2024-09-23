@@ -9,9 +9,9 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+        stage('Clone Repository') {
             steps {
-                git 'https://github.com/adirahamim/WorldOfGames.git'
+                git branch: 'main', url: 'https://github.com/adirahamim/WorldOfGames.git'
             }
         }
         stage('Build') {
