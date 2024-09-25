@@ -32,5 +32,5 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 CMD curl 
 
 # Run app.py when the container launches
 #CMD ["python", "app.py"]
-CMD ["python", "/app/MainScores.py"]
+#CMD ["python", "/app/MainScores.py"]
 
