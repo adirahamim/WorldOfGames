@@ -17,7 +17,8 @@ def test_scores_service(url):
     return 1 <= score <= 1000
 
 def main_function():
-    url = "http://localhost:5002"
+    #url = "http://localhost:5002"
+    url = "http://10.0.1.173:5002"
     if test_scores_service(url):
         return 0
     else:
