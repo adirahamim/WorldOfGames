@@ -34,6 +34,7 @@ pipeline {
             steps {
                 script {
                     echo 'Running tests...'
+                    sh 'ls -la'
                     def result = sh(script: 'python e2e.py', returnStatus: true)
                     if (result != 0) {
                         error('Tests failed')
