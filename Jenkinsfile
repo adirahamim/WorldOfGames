@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     echo 'Running Docker container...'
-                    docker.image("${IMAGE_NAME}").run("-p ${HOST_PORT}:${PORT} -v ${WORKSPACE}/${SCORES_FILE}:/app/Scores.txt")
+                    docker.image("${IMAGE_NAME}").run("-p ${HOST_PORT}:${PORT} -v ${WORKSPACE}/${SCORES_FILE}:/Scores.txt")
                 }
             }
         }
