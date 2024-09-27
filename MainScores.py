@@ -5,7 +5,7 @@ from flask import Flask, render_template_string
 #print("Current working directory:", os.getcwd())
 
 app = Flask(__name__)
-SCORES_FILE_NAME = "../Scores.txt"
+SCORES_FILE_NAME = "Scores.txt"
 
 @app.route('/')
 def score_server():

@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     echo 'Running Docker container...'
-                    docker.image("${IMAGE_NAME}").run("-p ${HOST_PORT}:${PORT} -v ${WORKSPACE}/${SCORES_FILE}:/Scores.txt")
+                    docker.image("${IMAGE_NAME}").run("-p ${HOST_PORT}:${PORT} -v ${WORKSPACE}/${SCORES_FILE}:/app/Scores.txt")
                 }
             }
         }
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     echo 'Running tests...'
-                    def result = sh(script: 'python e2e.py', returnStatus: true)
+                    def result = sh(script: 'python tests/e2e.py', returnStatus: true)
                     if (result != 0) {
                         echo 'Test script failed with exit code: ' + result
                         error('Tests failed')
