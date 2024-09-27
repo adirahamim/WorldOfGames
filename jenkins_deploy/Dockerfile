@@ -43,6 +43,7 @@ RUN curl -L "https://github.com/docker/compose/releases/download/2.28.1/docker-c
 # Copy plugins file and entrypoint script
 COPY --chown=jenkins:jenkins plugins.txt /usr/share/jenkins/ref/plugins.txt
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY test/e2e.py /usr/share/jenkins/ref/e2e.py
 
 # Ensure entrypoint script is executable
 RUN chmod +x /usr/local/bin/entrypoint.sh
