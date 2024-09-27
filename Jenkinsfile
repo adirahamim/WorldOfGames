@@ -9,6 +9,11 @@ pipeline {
     }
 
     stages {
+        stage('Setup') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
         stage('Clone Repository') {
             steps {
                 git branch: 'main', url: 'https://github.com/adirahamim/WorldOfGames.git'
@@ -26,7 +31,7 @@ pipeline {
             steps {
                 script {
                     echo 'Running Docker container...'
-                    docker.image("${IMAGE_NAME}").run("-p ${HOST_PORT}:${PORT} -v ${WORKSPACE}/${SCORES_FILE}:/Scores.txt")
+                    docker.image("${IMAGE_NAME}").run("-p ${HOST_PORT}:${PORT} -v ${WORKSPACE}/${SCORES_FILE}:/app/Scores.txt")
                 }
             }
         }
