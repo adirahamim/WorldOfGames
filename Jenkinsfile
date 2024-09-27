@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     echo 'Running tests...'
-                    def result = sh(script: 'python tests/e2e.py', returnStatus: true)
+                    def result = sh(script: 'python e2e.py', returnStatus: true)
                     if (result != 0) {
                         echo 'Test script failed with exit code: ' + result
                         error('Tests failed')
