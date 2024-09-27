@@ -11,12 +11,7 @@ pipeline {
         HOST_PORT = '8777'
         SCORES_FILE = 'Scores.txt'
     }
-//     stages {
-//         stage('Setup') {
-//             steps {
-//                 sh 'pip install -r requirements.txt'
-//             }
-//         }
+     stages {
         stage('Clone Repository') {
             steps {
                 git branch: 'main', url: 'https://github.com/adirahamim/WorldOfGames.git'
