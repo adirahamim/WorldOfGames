@@ -25,6 +25,10 @@ RUN add-apt-repository \
    $(lsb_release -cs) \
    stable"
 
+RUN pip install --no-cache-dir -r requirements.txt
+
+
+
 # Install Docker
 RUN apt-get update -qq \
     && apt-get install docker.io -y
