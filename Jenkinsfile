@@ -11,7 +11,7 @@ pipeline {
         HOST_PORT = '8777'
         SCORES_FILE = 'Scores.txt'
     }
-    stages {
+//     stages {
 //         stage('Setup') {
 //             steps {
 //                 sh 'pip install -r requirements.txt'
