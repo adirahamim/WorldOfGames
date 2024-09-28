@@ -9,16 +9,6 @@ pipeline {
     }
 
     stages {
-        stage('Install pip') {
-            steps {
-                sh 'sudo apt-get update && apt-get install -y python3-pip'
-            }
-        }
-        stage('Install dependencies') {
-            steps {
-                sh 'pip3 install -r requirements.txt'
-            }
-        }
         stage('Clone Repository') {
             steps {
                 git branch: 'main', url: 'https://github.com/adirahamim/WorldOfGames.git'
