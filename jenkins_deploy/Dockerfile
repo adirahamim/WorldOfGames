@@ -11,7 +11,7 @@ USER root
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 
 
-COPY requirements.txt requirements.txt
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 # Install necessary packages
 RUN apt-get update --fix-missing \
@@ -64,7 +64,7 @@ RUN jenkins-plugin-cli -f /usr/share/jenkins/ref/plugins.txt
 # Switch back to Jenkins user
 USER jenkins
 
-COPY requirements.txt .
+#COPY requirements.txt .
 # Set entrypoint
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
