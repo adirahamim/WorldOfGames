@@ -10,7 +10,18 @@ USER root
 # Skip initial Jenkins setup
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 
+##### RUN pip install selenium #####
+WORKDIR /app
+
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+# Add this line
 RUN pip install selenium
+
+COPY . .
+
+############
 
 # Install necessary packages
 RUN apt-get update --fix-missing \
