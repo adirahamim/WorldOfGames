@@ -10,19 +10,9 @@ USER root
 # Skip initial Jenkins setup
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 
-##### RUN pip install selenium #####
-WORKDIR /app
 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
-
-# Add this line
-RUN pip install selenium
-
-COPY . .
-
-############
-
 # Install necessary packages
 RUN apt-get update --fix-missing \
     && apt-get install -qqy apt-transport-https ca-certificates curl dnsutils gnupg2 software-properties-common python3
@@ -74,10 +64,23 @@ RUN jenkins-plugin-cli -f /usr/share/jenkins/ref/plugins.txt
 # Switch back to Jenkins user
 USER jenkins
 
+COPY requirements.txt .
 # Set entrypoint
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 
+##### RUN pip install selenium #####
+#WORKDIR /app
+#
+#COPY requirements.txt requirements.txt
+#RUN pip install -r requirements.txt
+#
+## Add this line
+#RUN pip install selenium
+#
+#COPY . .
+
+############
 #ENTRYPOINT ["./ENTRYPOINT.sh"]
 
 
