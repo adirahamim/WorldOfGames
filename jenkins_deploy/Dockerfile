@@ -15,7 +15,7 @@ RUN apt-get update --fix-missing \
     && apt-get install -qqy apt-transport-https ca-certificates curl dnsutils gnupg2 software-properties-common python3
 # Create a symlink to ensure `python` points to `python3`
 RUN ln -s /usr/bin/python3 /usr/bin/python
-
+RUN apt-get update && apt-get install -y python3-pip
 # Add Docker's official GPG key
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 
