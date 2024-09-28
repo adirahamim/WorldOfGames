@@ -53,3 +53,4 @@ pipeline-graph-view
 ansible
 docker-workflow
 kubernetes
+selenium

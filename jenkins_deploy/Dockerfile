@@ -11,8 +11,8 @@ USER root
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 
 
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+#COPY requirements.txt .
+#RUN pip install -r requirements.txt
 # Install necessary packages
 RUN apt-get update --fix-missing \
     && apt-get install -qqy apt-transport-https ca-certificates curl dnsutils gnupg2 software-properties-common python3
