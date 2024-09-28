@@ -9,6 +9,11 @@ pipeline {
     }
 
     stages {
+        stage('Setup') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
         stage('Clone Repository') {
             steps {
                 git branch: 'main', url: 'https://github.com/adirahamim/WorldOfGames.git'
