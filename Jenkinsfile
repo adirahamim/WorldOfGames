@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
-                sh 'pip install -r requirements.txt'
+                sh 'export PATH=$PATH:/path/to/pip && pip install -r requirements.txt'
             }
         }
         stage('Clone Repository') {
