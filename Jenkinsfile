@@ -10,8 +10,13 @@ pipeline {
 
     stages {
         stage('Setup') {
+            stage('Setup Python Environment') {
             steps {
-                sh 'export PATH=$PATH:/path/to/pip && pip install -r requirements.txt'
+                sh '''
+                python -m venv venv
+                source venv/bin/activate
+                pip install -r requirements.txt
+                '''
             }
         }
         stage('Clone Repository') {
