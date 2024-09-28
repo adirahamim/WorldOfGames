@@ -11,7 +11,6 @@ pipeline {
     stages {
         stage('Setup') {
             stage('Setup Python Environment') {
-            steps {
                 sh '''
                 python -m venv venv
                 source venv/bin/activate
