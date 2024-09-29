@@ -42,16 +42,16 @@ pipeline {
 //                 }
 //             }
 //         }
-        stage('Finalize') {
-            steps {
-                script {
-                    echo 'Finalizing...'
-                    sh "docker stop \$(docker ps -q --filter ancestor=${IMAGE_NAME})"
-                    docker.image("${IMAGE_NAME}").push()
-                }
-            }
-        }
-    }
+//         stage('Finalize') {
+//             steps {
+//                 script {
+//                     echo 'Finalizing...'
+//                     sh "docker stop \$(docker ps -q --filter ancestor=${IMAGE_NAME})"
+//                     docker.image("${IMAGE_NAME}").push()
+//                 }
+//             }
+//         }
+//     }
     post {
         always {
             script {
