@@ -30,28 +30,28 @@ pipeline {
                 }
             }
         }
-//         stage('Test') {
-//             steps {
-//                 script {
-//                     echo 'Running tests...'
-//                     def result = sh(script: 'python e2e.py', returnStatus: true)
-//                     if (result != 0) {
-//                         echo 'Test script failed with exit code: ' + result
-//                         error('Tests failed')
-//                     }
-//                 }
-//             }
-//         }
-//         stage('Finalize') {
-//             steps {
-//                 script {
-//                     echo 'Finalizing...'
-//                     sh "docker stop \$(docker ps -q --filter ancestor=${IMAGE_NAME})"
-//                     docker.image("${IMAGE_NAME}").push()
-//                 }
-//             }
-//         }
-//     }
+        stage('Test') {
+            steps {
+                script {
+                    echo 'Running tests...'
+                    def result = sh(script: 'python e2e.py', returnStatus: true)
+                    if (result != 0) {
+                        echo 'Test script failed with exit code: ' + result
+                        error('Tests failed')
+                    }
+                }
+            }
+        }
+        stage('Finalize') {
+            steps {
+                script {
+                    echo 'Finalizing...'
+                    sh "docker stop \$(docker ps -q --filter ancestor=${IMAGE_NAME})"
+                    docker.image("${IMAGE_NAME}").push()
+                }
+            }
+        }
+    }
     post {
         always {
             script {
