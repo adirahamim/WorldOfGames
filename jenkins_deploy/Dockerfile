@@ -1,5 +1,16 @@
 FROM jenkins/jenkins
 
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the requirements file first to leverage Docker cache
+COPY requirements.txt .
+
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+
 # Environment variables for Jenkins user
 ENV JENKINS_USER admin
 ENV JENKINS_PASS admin
