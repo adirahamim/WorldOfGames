@@ -1,15 +1,5 @@
 FROM jenkins/jenkins
 
-# Set the working directory in the container
-WORKDIR /app
-
-# Copy the requirements file first to leverage Docker cache
-COPY requirements.txt .
-
-
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
-
 
 # Environment variables for Jenkins user
 ENV JENKINS_USER admin
@@ -72,6 +62,7 @@ RUN ls -l /usr/local/bin/
 # Install Jenkins plugins
 RUN jenkins-plugin-cli -f /usr/share/jenkins/ref/plugins.txt
 
+
 # Switch back to Jenkins user
 USER jenkins
 
@@ -80,19 +71,6 @@ USER jenkins
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 
-##### RUN pip install selenium #####
-#WORKDIR /app
-#
-#COPY requirements.txt requirements.txt
-#RUN pip install -r requirements.txt
-#
-## Add this line
-#RUN pip install selenium
-#
-#COPY . .
-
-############
-#ENTRYPOINT ["./ENTRYPOINT.sh"]
 
 
 
